@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      body {
+        display: flex;
+        min-height: 100vh;
+        background-color: #f4f6f9;
+      }
+
+      .sidebar {
+        width: 250px;
+        background-color: #0d6efd;
+        color: white;
+        padding-top: 20px;
+        padding-left: 10px;
+      }
+
+      .sidebar h2 {
+        font-size: 20px;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .sidebar .profile {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      .sidebar .profile img {
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+      }
+
+      .sidebar .profile h3 {
+        font-size: 18px;
+        margin-top: 10px;
+      }
+
+      .sidebar .profile p {
+        font-size: 14px;
+        color: #ccc;
+      }
+
+      .sidebar ul {
+        list-style: none;
+      }
+
+      .sidebar ul li {
+        padding: 15px;
+        font-size: 16px;
+      }
+
+      .sidebar ul li a {
+        color: white;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+      }
+
+      .sidebar ul li a:hover {
+        background-color: #025ce2;
+        border-radius: 5px;
+      }
+
+      .sidebar ul li a i {
+        margin-right: 10px;
+      }
+
+      .main-content {
+        flex: 1;
+        padding: 20px;
+      }
+
+      .dashboard-header {
+        background-color: #0d6efd;
+        color: white;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        text-align: center;
+        font-size: 24px;
+      }
+
+      .dashboard-cards,
+      .section {
+        display: none;
+      }
+
+      .section.active,
+      .dashboard-cards.active {
+        display: block;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+      }
+
+      table,
+      th,
+      td {
+        border: 1px solid #ddd;
+      }
+
+      th,
+      td {
+        padding: 10px;
+        text-align: left;
+      }
+
+      th {
+        background-color: #0d6efd;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sidebar">
+      <h2>Universitas Pamulang</h2>
+      <div class="profile">
+        <img src="img/profil.jpeg" alt="Profile Picture" />
+        <h3>Yopi Sunan Nugraha</h3>
+        <p>Administrator</p>
+      </div>
+      <ul>
+        <li>
+          <a href="#" onclick="showSection('dashboard')"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+        </li>
+        <li>
+          <a href="#" onclick="showSection('karyawan')"><i class="fas fa-users"></i> Karyawan</a>
+        </li>
+        <li>
+          <a href="#" onclick="showSection('jabatan')"><i class="fas fa-briefcase"></i> Jabatan</a>
+        </li>
+        <li>
+          <a href="#" onclick="showSection('divisi')"><i class="fas fa-building"></i> Divisi</a>
+        </li>
+        <li>
+          <a href="#" onclick="showSection('absensi')"><i class="fas fa-calendar-check"></i> Absensi</a>
+        </li>
+        <li>
+          <a href="#" onclick="showSection('izin')"><i class="fas fa-envelope-open-text"></i> Izin</a>
+        </li>
+        <li>
+          <a href="#" onclick="showSection('lembur')"><i class="fas fa-clock"></i> Lembur</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="main-content">
+      <div id="dashboard" class="dashboard-header section active">Sistem Informasi Manajemen Karyawan</div>
+
+      <div id="dashboard" class="dashboard-cards section active">
+        <div class="dashboard-card">
+          <h3>Data Pegawai</h3>
+          <p>13</p>
+        </div>
+        <div class="dashboard-card">
+          <h3>Absensi Hari Ini</h3>
+          <p>11 May 2023 - 0</p>
+        </div>
+        <div class="dashboard-card">
+          <h3>Izin Menunggu Konfirmasi</h3>
+          <p>2</p>
+        </div>
+        <div class="dashboard-card">
+          <h3>Lembur Menunggu Konfirmasi</h3>
+          <p>1</p>
+        </div>
+      </div>
+
+      <div id="karyawan" class="section">
+        <h2>Data Karyawan</h2>
+        <table>
+          <tr>
+            <th>ID</th>
+            <th>Nama</th>
+            <th>Jabatan</th>
+            <th>Divisi</th>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Ahmad</td>
+            <td>Manager</td>
+            <td>Operasional</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Yopi</td>
+            <td>Staff</td>
+            <td>Keuangan</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Yusuf</td>
+            <td>Kepala Bagian</td>
+            <td>Umum</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Ikmal</td>
+            <td>Kepala Bagian</td>
+            <td>Operasional</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Hasan</td>
+            <td>Kepala Bagian</td>
+            <td>BAA</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>Daffa</td>
+            <td>Kepala Sub Bagian</td>
+            <td>BAA</td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td>Arel</td>
+            <td>Kepala Sub Bagian</td>
+            <td>Cleaning Service</td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>Wildan</td>
+            <td>Kepala Sub Bagian</td>
+            <td>IT</td>
+          </tr>
+          <tr>
+            <td>9</td>
+            <td>Asep</td>
+            <td>Staff</td>
+            <td>Operasional</td>
+          </tr>
+          <tr>
+            <td>10</td>
+            <td>Kaila</td>
+            <td>Manager</td>
+            <td>Keuangan</td>
+          </tr>
+          <tr>
+            <td>11</td>
+            <td>Yopi</td>
+            <td>Manager</td>
+            <td>IT</td>
+          </tr>
+          <tr>
+            <td>12</td>
+            <td>Ija</td>
+            <td>Staff</td>
+            <td>Cleaning Service</td>
+          </tr>
+          <tr>
+            <td>13</td>
+            <td>Adit</td>
+            <td>Staff</td>
+            <td>Operasional</td>
+          </tr>
+        </table>
+      </div>
+
+      <div id="jabatan" class="section">
+        <h2>Data Jabatan</h2>
+        <table>
+          <tr>
+            <th>ID</th>
+            <th>Nama Jabatan</th>
+            <th>Gaji</th>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Manager</td>
+            <td>Rp10.000.000</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Staff</td>
+            <td>Rp5.000.000</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Kepala Bagian</td>
+            <td>Rp7.000.000</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Kepala Sub Bagian</td>
+            <td>Rp5.000.000</td>
+          </tr>
+        </table>
+      </div>
+
+      <div id="divisi" class="section">
+        <h2>Data Divisi</h2>
+        <table>
+          <tr>
+            <th>ID</th>
+            <th>Nama Divisi</th>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Operasional</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Keuangan</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Umum</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>BAA</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Cleaning Service</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>IT</td>
+          </tr>
+        </table>
+      </div>
+
+      <div id="absensi" class="section">
+        <h2>Data Absensi</h2>
+        <table>
+          <tr>
+            <th>ID</th>
+            <th>Nama</th>
+            <th>Tanggal</th>
+            <th>Status</th>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Ahmad</td>
+            <td>2023-05-11</td>
+            <td>Hadir</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Siti</td>
+            <td>2023-05-11</td>
+            <td>Hadir</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Yusuf</td>
+            <td>2023-05-11</td>
+            <td>Hadir</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Ikmal</td>
+            <td>2023-05-11</td>
+            <td>Hadir</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Hasan</td>
+            <td>2023-05-11</td>
+            <td>Hadir</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>Daffa</td>
+            <td>2023-05-11</td>
+            <td>Hadir</td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td>Arel</td>
+            <td>2023-05-11</td>
+            <td>Hadir</td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>Wildan</td>
+            <td>2023-05-11</td>
+            <td>Hadir</td>
+          </tr>
+          <tr>
+            <td>9</td>
+            <td>Asep</td>
+            <td>2023-05-11</td>
+            <td>Hadir</td>
+          </tr>
+          <tr>
+            <td>10</td>
+            <td>Kaila</td>
+            <td>2023-05-11</td>
+            <td>Hadir</td>
+          </tr>
+          <tr>
+            <td>11</td>
+            <td>Yopi</td>
+            <td>2023-05-11</td>
+            <td>Hadir</td>
+          </tr>
+          <tr>
+            <td>12</td>
+            <td>Ija</td>
+            <td>2023-05-11</td>
+            <td>Hadir</td>
+          </tr>
+          <tr>
+            <td>13</td>
+            <td>Adit</td>
+            <td>2023-05-11</td>
+            <td>Hadir</td>
+          </tr>
+        </table>
+      </div>
+
+      <div id="izin" class="section">
+        <h2>Data Izin</h2>
+        <table>
+          <tr>
+            <th>ID</th>
+            <th>Nama</th>
+            <th>Tanggal</th>
+            <th>Alasan</th>
+            <th>Status</th>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Ahmad</td>
+            <td>2023-05-10</td>
+            <td>Sakit</td>
+            <td>Menunggu</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Siti</td>
+            <td>2023-05-09</td>
+            <td>Keluarga</td>
+            <td>Disetujui</td>
+          </tr>
+        </table>
+      </div>
+
+      <div id="lembur" class="section">
+        <h2>Data Lembur</h2>
+        <table>
+          <tr>
+            <th>ID</th>
+            <th>Nama</th>
+            <th>Tanggal</th>
+            <th>Jam Lembur</th>
+            <th>Status</th>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Ahmad</td>
+            <td>2023-05-11</td>
+            <td>2 Jam</td>
+            <td>Menunggu</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Siti</td>
+            <td>2023-05-11</td>
+            <td>1 Jam</td>
+            <td>Disetujui</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Yopi</td>
+            <td>2023-05-11</td>
+            <td>3 Jam</td>
+            <td>Disetujui</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Daffa</td>
+            <td>2023-05-11</td>
+            <td>2 Jam</td>
+            <td>Disetujui</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Wildan</td>
+            <td>2023-05-11</td>
+            <td>3 Jam</td>
+            <td>Disetujui</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <script>
+      function showSection(sectionId) {
+        document.querySelectorAll(".section").forEach((section) => section.classList.remove("active"));
+        document.getElementById(sectionId).classList.add("active");
+      }
+    </script>
+  </body>
+</html>
